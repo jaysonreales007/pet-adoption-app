@@ -9,7 +9,7 @@ function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-start">
           <div className='flex-col items-start space-y-2 max-w-md hidden md:block'>
             <Link to="/">
-              <img src="/public/logo.png" alt="Pet Adoption Logo" className="h-12 w-auto" />
+              <img src="/logo.png" alt="Pet Adoption Logo" className="h-12 w-auto" />
             </Link>
             <p className='text-justify'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla culpa at eveniet voluptatibus! Omnis veritatis provident laboriosam, obcaecati quasi amet consequatur ipsum voluptatem hic porro quia possimus, totam a molestias.</p>
           </div>

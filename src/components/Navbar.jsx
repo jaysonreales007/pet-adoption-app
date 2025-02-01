@@ -6,7 +6,7 @@ function Navbar() {
     <nav className="bg-white shadow-md fixed w-full top-0 left-0 z-50">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <Link to="/">
-          <img src="/public/logo.png" alt="Pet Adoption Logo" className="h-12 w-auto" />
+          <img src="/logo.png" alt="Pet Adoption Logo" className="h-12 w-auto" />
         </Link>
 
         <ul className="hidden md:flex items-center justify-between space-x-6">

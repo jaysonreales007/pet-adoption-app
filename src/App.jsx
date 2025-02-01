@@ -10,6 +10,7 @@ function AppRouter() {
       <Routes>
         <Route path='/' element={<MainLayout />}>
           <Route index element={<Home />} />
+          <Route index element={<Home />} />
         </Route>
       </Routes>
     </Router>
