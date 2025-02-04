@@ -1,14 +1,32 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { motion, useInView } from 'framer-motion'
 
 const featuredDogs = [
-  { id: "1", name: "Max", breed: "Labrador", age: "3 years", imageUrl: "/images/image-3.jpg" },
-  { id: "2", name: "Bella", breed: "German Shepherd", age: "2 years", imageUrl: "/images/image-4.jpg" },
-  { id: "3", name: "Charlie", breed: "Golden Retriever", age: "4 years", imageUrl: "/images/image-2.jpg" },
-  { id: "4", name: "Lucy", breed: "Beagle", age: "1 year", imageUrl: "/images/image-8.jpg" },
+  { id: "1", name: "Max", breed: "Labrador", age: "3 years", imageUrl: "https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9nfGVufDB8fDB8fHww" },
+  { id: "2", name: "Bella", breed: "German Shepherd", age: "2 years", imageUrl: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGRvZ3xlbnwwfHwwfHx8MA%3D%3D" },
+  { id: "3", name: "Charlie", breed: "Golden Retriever", age: "4 years", imageUrl: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZG9nfGVufDB8fDB8fHww" },
+  { id: "4", name: "Lucy", breed: "Beagle", age: "1 year", imageUrl: "https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGRvZ3xlbnwwfHwwfHx8MA%3D%3D" },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3
+    }
+  }
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y:0, transition: { duration: 0.5 } }
+}
+
 function FeatureDogs() {
+  const ref = React.useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
   return (
     <section className="bg-white py-12 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -23,9 +41,19 @@ function FeatureDogs() {
 
         {/* Feature Grid */}
 
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <motion.div
+          ref={ref}
+          variants={containerVariants}
+          initial="hidden"
+          className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4"
+          animate={isInView ? "visible" : "hidden"}
+        >
           {featuredDogs.map((dog) => (
-            <div key={dog.id} className="group relative">
+            <motion.div
+              key={dog.id}
+              variants={itemVariants}
+            >
+              <div className="group relative">
               <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200">
                 <img
                   src={dog.imageUrl || "/placeholder.svg"}
@@ -51,8 +79,9 @@ function FeatureDogs() {
                 <p className="text-sm font-medium text-gray-900">{dog.age}</p>
               </div>
             </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         <div className="mt-12 text-center">
           <Link

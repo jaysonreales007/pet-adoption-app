@@ -3,6 +3,7 @@ import Hero from '../components/Hero';
 import FeatureDogs from '../components/FeatureDogs';
 import AdoptionProcess from '../components/AdoptionProcess';
 import FAQ from '../components/FAQ';
+import Testimonials from '../components/Testimonials';
 
 function Home() {
   return (
@@ -10,6 +11,7 @@ function Home() {
       <Hero />
       <FeatureDogs />
       <AdoptionProcess />
+      <Testimonials />
       <FAQ />
     </div>
   );
